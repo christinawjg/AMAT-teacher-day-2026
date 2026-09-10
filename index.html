@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<title>师恩如"材" · 教师节祝福盲盒</title>
+<style>
+:root{
+  --navy:#0A2A5E;
+  --blue:#1A4B8C;
+  --blue-light:#2A6BB8;
+  --gold:#D4AF37;
+  --gold-light:#FFD700;
+  --ivory:#FFFFF0;
+  --cyan:#80CED7;
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+html,body{height:100%;overflow:hidden;}
+body{
+  font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  background:var(--navy);
+  color:var(--ivory);
+  position:relative;
+}
+
+/* ---------- 背景 ---------- */
+.bg{
+  position:fixed;inset:0;z-index:0;
+  background:
+    radial-gradient(circle at 20% 8%, rgba(42,107,184,.55), transparent 55%),
+    radial-gradient(circle at 85% 88%, rgba(128,206,215,.18), transparent 55%),
+    linear-gradient(160deg,#0A2A5E 0%,#061a3c 100%);
+}
+.bg::after{
+  content:'';position:absolute;inset:0;
+  background-image:
+    linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px);
+  background-size:34px 34px;
+  -webkit-mask-image:radial-gradient(ellipse at center, #000 25%, transparent 78%);
+  mask-image:radial-gradient(ellipse at center, #000 25%, transparent 78%);
+}
+
+/* ---------- 浮动粒子 ---------- */
+.particle{
+  position:fixed;bottom:-10px;border-radius:50%;
+  background:var(--gold-light);pointer-events:none;z-index:1;
+  animation:floatUp linear infinite;
+}
+@keyframes floatUp{
+  0%{transform:translateY(0) scale(.5);opacity:0;}
+  15%{opacity:.85;}
+  85%{opacity:.5;}
+  100%{transform:translateY(-108vh) scale(1.15);opacity:0;}
+}
+
+/* ---------- 页面容器 ---------- */
+.page{
+  position:fixed;inset:0;z-index:2;
+  overflow-y:auto;-webkit-overflow-scrolling:touch;
+  padding:24px 20px;
+  display:flex;flex-direction:column;
+  opacity:0;visibility:hidden;pointer-events:none;
+  transition:opacity .45s ease, visibility .45s;
+}
+.page.active{opacity:1;visibility:visible;pointer-events:auto;}
+.page-inner{
+  margin:auto;width:100%;
+  display:flex;flex-direction:column;align-items:center;
+}
+
+/* ---------- 封面 ---------- */
+.cover-eyebrow{
+  font-size:12px;letter-spacing:2px;
+  color:rgba(255,255,255,.55);
+  margin-bottom:14px;text-align:center;
+}
+.cover-title{
+  font-size:38px;font-weight:800;letter-spacing:4px;
+  background:linear-gradient(135deg,#FFF8DC,#FFD700 40%,#D4AF37);
+  -webkit-background-clip:text;background-clip:text;
+  color:transparent;
+  text-align:center;line-height:1.2;
+}
+.cover-title .accent{
+  background:linear-gradient(135deg,#FFD700,#FFF8DC);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.cover-sub{
+  font-size:14px;color:rgba(255,255,255,.7);
+  margin-top:10px;letter-spacing:1px;text-align:center;
+}
+
+/* 盲盒 */
+.box-stage{
+  position:relative;width:230px;height:230px;
+  display:flex;align-items:center;justify-content:center;
+  margin:26px 0 34px;
+}
+.box-glow{
+  position:absolute;width:180px;height:180px;border-radius:50%;
+  background:radial-gradient(circle, rgba(212,175,55,.4), transparent 65%);
+  filter:blur(12px);
+  animation:pulseGlow 3s ease-in-out infinite;
+}
+@keyframes pulseGlow{
+  0%,100%{transform:scale(1);opacity:.7;}
+  50%{transform:scale(1.14);opacity:1;}
+}
+.ring{
+  position:absolute;border-radius:50%;pointer-events:none;
+}
+.ring1{
+  width:196px;height:196px;
+  border:1px dashed rgba(212,175,55,.4);
+  animation:spin 14s linear infinite;
+}
+.ring2{
+  width:224px;height:224px;
+  border:1px solid rgba(128,206,215,.22);
+  animation:spin 22s linear infinite reverse;
+}
+@keyframes spin{to{transform:rotate(360deg);}}
+.box-shaker{position:relative;display:flex;align-items:center;justify-content:center;}
+.box-shaker.shaking{animation:shakeBox .7s ease-in-out;}
+@keyframes shakeBox{
+  0%,100%{transform:translate(0,0) rotate(0);}
+  10%{transform:translate(-5px,2px) rotate(-4deg);}
+  20%{transform:translate(6px,-3px) rotate(4deg);}
+  30%{transform:translate(-7px,-2px) rotate(-5deg);}
+  40%{transform:translate(7px,3px) rotate(5deg);}
+  50%{transform:translate(-6px,2px) rotate(-4deg);}
+  60%{transform:translate(6px,-2px) rotate(4deg);}
+  70%{transform:translate(-5px,3px) rotate(-3deg);}
+  80%{transform:translate(5px,-3px) rotate(3deg);}
+  90%{transform:translate(-2px,1px) rotate(-1deg);}
+}
+.crystal-box{
+  position:relative;width:150px;height:150px;
+  filter:drop-shadow(0 0 24px rgba(212,175,55,.55));
+  animation:bob 3.6s ease-in-out infinite;
+  cursor:pointer;
+}
+@keyframes bob{
+  0%,100%{transform:translateY(0);}
+  50%{transform:translateY(-9px);}
+}
+.crystal-border{
+  position:absolute;inset:0;
+  clip-path:polygon(50% 0%,100% 25%,100% 75%,50% 100%,0% 75%,0% 25%);
+  background:linear-gradient(160deg,#FFD700,#D4AF37 45%,#8B6914);
+}
+.crystal-face{
+  position:absolute;inset:3px;
+  clip-path:polygon(50% 0%,100% 25%,100% 75%,50% 100%,0% 75%,0% 25%);
+  background:radial-gradient(circle at 50% 35%, #2A6BB8 0%, #123a6e 45%, #071b3d 100%);
+  display:flex;align-items:center;justify-content:center;
+  overflow:hidden;
+}
+.hex-grid{
+  position:absolute;inset:0;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='24' viewBox='0 0 28 24'%3E%3Cpath d='M7 1l6 3.5v7L7 15l-6-3.5v-7z' fill='none' stroke='%23FFD700' stroke-opacity='0.35' stroke-width='1'/%3E%3C/svg%3E");
+  background-size:28px 24px;
+  opacity:.75;
+  animation:gridShift 9s linear infinite;
+}
+@keyframes gridShift{
+  from{background-position:0 0;}
+  to{background-position:28px 24px;}
+}
+.core-dot{
+  width:36px;height:36px;border-radius:50%;
+  background:radial-gradient(circle,#FFF8DC,#FFD700 45%,transparent 72%);
+  box-shadow:0 0 32px 12px rgba(255,215,0,.55);
+  animation:pulseGlow 2.4s ease-in-out infinite;
+}
+
+/* ---------- 按钮 ---------- */
+.btn-main{
+  position:relative;
+  padding:15px 54px;
+  border:none;border-radius:999px;
+  font-size:17px;font-weight:700;letter-spacing:2px;
+  color:#0A2A5E;
+  background:linear-gradient(135deg,#FFD700,#D4AF37 60%,#B8860B);
+  box-shadow:0 8px 28px rgba(212,175,55,.45), inset 0 1px 0 rgba(255,255,255,.6);
+  cursor:pointer;font-family:inherit;
+  transition:transform .18s, box-shadow .18s;
+}
+.btn-main:active{transform:scale(.95);box-shadow:0 4px 16px rgba(212,175,55,.35);}
+.btn-main.small{padding:12px 34px;font-size:15px;letter-spacing:1px;}
+.btn-ghost{
+  padding:12px 30px;border-radius:999px;
+  font-size:15px;font-weight:600;letter-spacing:1px;
+  color:var(--gold-light);
+  background:rgba(212,175,55,.1);
+  border:1px solid rgba(212,175,55,.5);
+  cursor:pointer;font-family:inherit;
+  transition:transform .18s, background .18s;
+}
+.btn-ghost:active{transform:scale(.95);background:rgba(212,175,55,.2);}
+.cover-tip{
+  margin-top:18px;font-size:13px;
+  color:rgba(255,255,255,.5);letter-spacing:.5px;
+}
+.accent{color:var(--gold-light);font-weight:700;}
+
+/* ---------- 结果卡片 ---------- */
+.material-card{
+  width:min(88vw,340px);
+  background:linear-gradient(170deg, rgba(26,75,140,.92), rgba(10,42,94,.97));
+  border:1px solid rgba(212,175,55,.45);
+  border-radius:20px;overflow:hidden;
+  box-shadow:0 18px 50px rgba(0,0,0,.55), inset 0 0 0 1px rgba(255,215,0,.06);
+  animation:cardIn .55s cubic-bezier(.22,1.2,.36,1) both;
+}
+@keyframes cardIn{
+  from{opacity:0;transform:translateY(26px) scale(.92);}
+  to{opacity:1;transform:translateY(0) scale(1);}
+}
+.card-visual{
+  position:relative;height:150px;
+  background:linear-gradient(135deg, var(--c1,#2A6BB8), var(--c2,#0A2A5E));
+  overflow:hidden;
+}
+.card-visual::before{
+  content:'';position:absolute;inset:0;
+  background-image:var(--pat);
+  background-size:var(--pat-size,24px 24px);
+  opacity:.5;
+}
+.card-visual::after{
+  content:'';position:absolute;
+  width:90px;height:90px;left:50%;top:50%;
+  transform:translate(-50%,-50%);
+  border-radius:50%;
+  background:radial-gradient(circle, rgba(255,255,255,.85), transparent 70%);
+  opacity:.35;filter:blur(6px);
+}
+.card-body{padding:20px 22px 24px;}
+.card-cat{
+  display:inline-block;
+  font-size:11px;letter-spacing:1.5px;
+  padding:4px 12px;border-radius:999px;
+  color:var(--gold-light);
+  border:1px solid rgba(212,175,55,.5);
+  background:rgba(212,175,55,.1);
+  margin-bottom:12px;
+}
+.card-name{
+  font-size:25px;font-weight:800;letter-spacing:2px;
+  background:linear-gradient(135deg,#FFF8DC,#FFD700 50%,#D4AF37);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  margin-bottom:8px;
+}
+.card-desc{
+  font-size:13px;color:rgba(255,255,255,.65);
+  line-height:1.7;letter-spacing:.3px;
+}
+.card-line{
+  height:1px;margin:16px 0;
+  background:linear-gradient(90deg, transparent, rgba(212,175,55,.6), transparent);
+}
+.card-blessing{
+  font-size:14px;line-height:1.9;
+  color:rgba(255,255,255,.92);
+  letter-spacing:.4px;
+  text-align:justify;
+}
+.result-actions{
+  display:flex;gap:14px;margin-top:26px;
+  align-items:center;justify-content:center;
+}
+.btn-text{
+  margin-top:18px;background:none;border:none;
+  color:rgba(255,255,255,.5);
+  font-size:13px;letter-spacing:1px;
+  cursor:pointer;font-family:inherit;
+  text-decoration:underline;text-underline-offset:4px;
+  text-decoration-color:rgba(212,175,55,.5);
+}
+.btn-text:active{color:var(--gold-light);}
+
+/* ---------- 图鉴 ---------- */
+.coll-title{
+  font-size:22px;font-weight:800;letter-spacing:2px;
+  background:linear-gradient(135deg,#FFF8DC,#FFD700 50%,#D4AF37);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  text-align:center;
+}
+.coll-sub{
+  font-size:13px;color:rgba(255,255,255,.55);
+  margin-top:8px;letter-spacing:1px;
+}
+.coll-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:10px;width:min(92vw,360px);
+  margin:22px 0 26px;
+}
+.coll-item{
+  position:relative;aspect-ratio:1;
+  border-radius:14px;overflow:hidden;
+  border:1px solid rgba(212,175,55,.35);
+  display:flex;align-items:flex-end;justify-content:center;
+  padding-bottom:9px;
+}
+.coll-item.locked{
+  border-color:rgba(255,255,255,.1);
+  background:rgba(10,42,94,.45);
+  align-items:center;padding-bottom:0;
+}
+.coll-item.locked .coll-lock{
+  font-size:24px;color:rgba(255,255,255,.18);font-weight:700;
+}
+.mini-vis{
+  position:absolute;inset:0;
+  background:linear-gradient(135deg, var(--c1), var(--c2));
+  opacity:.92;
+}
+.mini-vis::after{
+  content:'';position:absolute;inset:0;
+  background-image:var(--pat);
+  background-size:var(--pat-size,20px 20px);
+  opacity:.5;
+}
+.coll-name{
+  position:relative;z-index:2;
+  font-size:11px;font-weight:600;
+  color:#fff;letter-spacing:.5px;
+  text-shadow:0 1px 5px rgba(0,0,0,.9);
+  line-height:1.3;text-align:center;padding:0 4px;
+}
+
+/* ---------- 图案库 ---------- */
+.pat-dots{
+  --pat:radial-gradient(circle, rgba(255,255,255,.9) 2px, transparent 3px);
+  --pat-size:26px 26px;
+}
+.pat-rings{
+  --pat:repeating-radial-gradient(circle at 50% 50%, transparent 0 10px, rgba(255,255,255,.5) 10px 11px);
+  --pat-size:auto;
+}
+.pat-hex{
+  --pat:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='24' viewBox='0 0 28 24'%3E%3Cpath d='M7 1l6 3.5v7L7 15l-6-3.5v-7z' fill='none' stroke='white' stroke-opacity='0.55' stroke-width='1'/%3E%3C/svg%3E");
+  --pat-size:28px 24px;
+}
+.pat-mesh{
+  --pat:repeating-linear-gradient(60deg, rgba(255,255,255,.55) 0 1px, transparent 1px 18px),
+        repeating-linear-gradient(-60deg, rgba(255,255,255,.55) 0 1px, transparent 1px 18px);
+  --pat-size:auto;
+}
+.pat-spiral{
+  --pat:repeating-linear-gradient(45deg, rgba(255,255,255,.5) 0 2px, transparent 2px 15px);
+  --pat-size:auto;
+}
+.pat-porous{
+  --pat:radial-gradient(circle at 22% 32%, rgba(255,255,255,.65) 9px, transparent 10px),
+        radial-gradient(circle at 72% 62%, rgba(255,255,255,.5) 12px, transparent 13px),
+        radial-gradient(circle at 42% 82%, rgba(255,255,255,.45) 7px, transparent 8px),
+        radial-gradient(circle at 85% 20%, rgba(255,255,255,.4) 6px, transparent 7px);
+  --pat-size:auto;
+}
+.pat-network{
+  --pat:linear-gradient(rgba(255,255,255,.5) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.5) 1px, transparent 1px);
+  --pat-size:22px 22px;
+}
+.pat-array{
+  --pat:radial-gradient(circle, rgba(255,255,255,.85) 3px, transparent 4px);
+  --pat-size:20px 20px;
+}
+.pat-gear{
+  --pat:repeating-conic-gradient(from 0deg, rgba(255,255,255,.55) 0deg 10deg, transparent 10deg 24deg);
+  --pat-size:64px 64px;
+}
+.pat-sun{
+  --pat:repeating-conic-gradient(from 0deg, rgba(255,255,255,.6) 0deg 5deg, transparent 5deg 18deg);
+  --pat-size:auto;
+}
+.pat-battery{
+  --pat:repeating-linear-gradient(90deg, rgba(255,255,255,.55) 0 6px, transparent 6px 20px);
+  --pat-size:auto;
+}
+.pat-cage{
+  --pat:radial-gradient(circle at 50% 50%, transparent 9px, rgba(255,255,255,.55) 9px 11px, transparent 11px);
+  --pat-size:32px 32px;
+}
+
+/* ---------- 闪光 & 提示 ---------- */
+#flash{
+  position:fixed;inset:0;z-index:999;
+  background:#fff;opacity:0;pointer-events:none;
+  transition:opacity .18s ease;
+}
+#flash.on{opacity:1;}
+
+.toast{
+  position:fixed;left:50%;top:50%;z-index:1000;
+  transform:translate(-50%,-50%) scale(.9);
+  background:rgba(0,0,0,.82);
+  color:#fff;padding:12px 26px;border-radius:12px;
+  font-size:14px;letter-spacing:.5px;
+  border:1px solid rgba(212,175,55,.45);
+  opacity:0;pointer-events:none;
+  transition:opacity .25s, transform .25s;
+  -webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);
+}
+.toast.show{opacity:1;transform:translate(-50%,-50%) scale(1);}
+</style>
+</head>
+<body>
+
+<div class="bg"></div>
+<div id="flash"></div>
+<div class="toast" id="toast"></div>
+
+<!-- ========== 封面页 ========== -->
+<section class="page active" id="pageCover">
+  <div class="page-inner">
+    <div class="cover-eyebrow">先进材料学域 · 2026 教师节</div>
+    <h1 class="cover-title">师恩如<span class="accent">"材"</span></h1>
+    <p class="cover-sub">抽一种先进材料，送一句"材"式祝福</p>
+
+    <div class="box-stage">
+      <div class="box-glow"></div>
+      <div class="ring ring1"></div>
+      <div class="ring ring2"></div>
+      <div class="box-shaker" id="boxShaker">
+        <div class="crystal-box" id="crystalBox">
+          <div class="crystal-border"></div>
+          <div class="crystal-face">
+            <div class="hex-grid"></div>
+            <div class="core-dot"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <button class="btn-main" id="btnDraw">开启盲盒</button>
+    <p class="cover-tip">已收集 <span class="accent" id="coverProgress">0</span> / 12 种材料</p>
+  </div>
+</section>
+
+<!-- ========== 结果页 ========== -->
+<section class="page" id="pageResult">
+  <div class="page-inner">
+    <div class="material-card" id="materialCard">
+      <div class="card-visual" id="cardVisual"></div>
+      <div class="card-body">
+        <div class="card-cat" id="cardCategory"></div>
+        <h2 class="card-name" id="cardName"></h2>
+        <p class="card-desc" id="cardDesc"></p>
+        <div class="card-line"></div>
+        <p class="card-blessing" id="cardBlessing"></p>
+      </div>
+    </div>
+
+    <div class="result-actions">
+      <button class="btn-ghost" id="btnCollection">我的图鉴</button>
+      <button class="btn-main small" id="btnAgain">再抽一次</button>
+    </div>
+    <button class="btn-text" id="btnCopy">复制祝福语</button>
+  </div>
+</section>
+
+<!-- ========== 图鉴页 ========== -->
+<section class="page" id="pageCollection">
+  <div class="page-inner">
+    <h2 class="coll-title">我的材料祝福图鉴</h2>
+    <p class="coll-sub">已收集 <span class="accent" id="collCount">0</span> / 12</p>
+    <div class="coll-grid" id="collGrid"></div>
+    <button class="btn-main small" id="btnBack">返回</button>
+  </div>
+</section>
+
+<script>
+/* =========================================================
+   材料数据库
+   ========================================================= */
+const MATERIALS = [
+  {
+    id:'qdot', name:'量子点', category:'量子材料', pattern:'dots',
+    c1:'#7B5CFF', c2:'#2A6BB8',
+    desc:'吸收暗处的紫外，发出温暖可见的光。',
+    blessing:'愿您疲惫如量子噪声被滤除，温柔且有定态；您像量子点，吸收暗处的紫外，发出温暖可见的光，在每一次激发下永远保持热爱。'
+  },
+  {
+    id:'superconductor', name:'超导材料', category:'量子材料', pattern:'rings',
+    c1:'#4A9EFF', c2:'#1A4B8C',
+    desc:'零电阻传递电流，临界温度下保持热爱。',
+    blessing:'愿您像超导材料，零电阻传递知识，临界温度下永远保持热爱；愿您科研零损耗，幸福无阻尼，桃李满园处处发光。'
+  },
+  {
+    id:'topo', name:'拓扑绝缘体', category:'量子材料', pattern:'hex',
+    c1:'#9B6BFF', c2:'#3A2A8C',
+    desc:'表面导电，内部绝缘，边界态受拓扑保护。',
+    blessing:'愿您表面温暖，内心沉静；对外热情导电，对内守住初心。像拓扑绝缘体，在喧嚣世界里永远保持热爱，边界清晰，初心不改。'
+  },
+  {
+    id:'hydrogel', name:'自修复水凝胶', category:'软物质材料', pattern:'mesh',
+    c1:'#34D3B5', c2:'#0E7C6B',
+    desc:'断裂后悄然愈合，拉伸后依然回弹。',
+    blessing:'愿您疲惫自愈，温柔且有弹性；您像自修复水凝胶，断裂后悄然愈合，拉伸后依然回弹，在岁月形变中永远保持热爱。'
+  },
+  {
+    id:'sma', name:'形状记忆合金', category:'软物质材料', pattern:'spiral',
+    c1:'#5BC0EB', c2:'#2A6BB8',
+    desc:'变形后能恢复原状，记住最初的形状。',
+    blessing:'愿您历经岁月拉伸，初心总能恢复；您像形状记忆合金，无论被生活弯折成什么形状，都能回到最初的理想，永远保持热爱。'
+  },
+  {
+    id:'aerogel', name:'气凝胶', category:'软物质材料', pattern:'porous',
+    c1:'#80CED7', c2:'#3A8FA8',
+    desc:'世界上最轻的固体，隔热保温，轻盈通透。',
+    blessing:'愿您轻装上阵，温暖他人；您像气凝胶，把寒冷挡在外面，把温暖留在心里，在忙碌日子里永远保持热爱。'
+  },
+  {
+    id:'ai', name:'AI辅助设计新材料', category:'AI / 计算材料', pattern:'network',
+    c1:'#A78BFA', c2:'#6D28D9',
+    desc:'从海量数据中学习，持续迭代优化。',
+    blessing:'愿您烦恼被算法降噪，幸福被模型放大；您像AI辅助设计的新材料，从海量数据中学会包容，在持续迭代中不断优化，永远保持热爱。'
+  },
+  {
+    id:'genome', name:'材料基因组计划', category:'AI / 计算材料', pattern:'array',
+    c1:'#F0ABFC', c2:'#A21CAF',
+    desc:'高通量筛选，快速找到最优解。',
+    blessing:'老师，您是人生"材料基因组计划"的首席科学家，从我们的兴趣、性格和潜力中提取特征，用耐心做高通量筛选，用关爱做机器学习，最终预测并调控出更好的我们。愿您科研快速收敛，生活最优解，永远保持热爱。'
+  },
+  {
+    id:'selfdriving', name:'自驱动实验室', category:'AI / 计算材料', pattern:'gear',
+    c1:'#FBBF24', c2:'#B45309',
+    desc:'7×24小时自动合成、表征、优化。',
+    blessing:'愿您像自驱动实验室，自动合成快乐、表征幸福、优化健康；我们愿做您最可靠的机械臂，帮您分担，陪您探索，在科研长跑中永远保持热爱。'
+  },
+  {
+    id:'perovskite', name:'钙钛矿太阳能电池', category:'能源 / 结构材料', pattern:'sun',
+    c1:'#FCD34D', c2:'#EA580C',
+    desc:'把每一缕微光都变成能量。',
+    blessing:'愿您像钙钛矿太阳能电池，把每一缕微光都变成能量；桃李满园，处处发光，在平凡日子里永远保持热爱。'
+  },
+  {
+    id:'solidbattery', name:'固态电池', category:'能源 / 结构材料', pattern:'battery',
+    c1:'#6EE7B7', c2:'#047857',
+    desc:'安全稳定，长续航，不掉电。',
+    blessing:'愿您像固态电池，安全稳定长续航；烦恼不掉电，幸福永远满格，在科研与讲台之间永远保持热爱。'
+  },
+  {
+    id:'mof', name:'MOF / COF', category:'能源 / 结构材料', pattern:'cage',
+    c1:'#FDBA74', c2:'#C2410C',
+    desc:'比表面积巨大，孔道有序，包容万物。',
+    blessing:'您如MOF，比表面积巨大，包容每个学生的不同；孔道有序，指引我们走向正确方向。愿您桃李满"孔"，吸附所有好运，脱附所有烦恼，永远保持热爱。'
+  }
+];
+
+/* =========================================================
+   状态管理
+   ========================================================= */
+const STORAGE_KEY = 'material_teacher_day_2026';
+let collected = new Set();
+let current = null;
+
+function saveState(){
+  try{ localStorage.setItem(STORAGE_KEY, JSON.stringify([...collected])); }catch(e){}
+}
+function loadState(){
+  try{
+    const d = localStorage.getItem(STORAGE_KEY);
+    if(d) collected = new Set(JSON.parse(d));
+  }catch(e){}
+}
+
+/* =========================================================
+   页面切换
+   ========================================================= */
+function showPage(id){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  const el = document.getElementById(id);
+  if(el){
+    el.classList.add('active');
+    el.scrollTop = 0;
+  }
+}
+
+/* =========================================================
+   抽卡逻辑
+   ========================================================= */
+function pickMaterial(){
+  const remaining = MATERIALS.filter(m => !collected.has(m.id));
+  const pool = remaining.length ? remaining : MATERIALS;
+  return pool[Math.floor(Math.random() * pool.length)];
+}
+
+function renderCard(mat){
+  const card = document.getElementById('materialCard');
+  card.style.animation = 'none';
+  void card.offsetWidth;
+  card.style.animation = '';
+
+  const visual = document.getElementById('cardVisual');
+  visual.className = 'card-visual pat-' + mat.pattern;
+  visual.style.setProperty('--c1', mat.c1);
+  visual.style.setProperty('--c2', mat.c2);
+
+  document.getElementById('cardCategory').textContent = mat.category;
+  document.getElementById('cardName').textContent = mat.name;
+  document.getElementById('cardDesc').textContent = mat.desc;
+  document.getElementById('cardBlessing').textContent = mat.blessing;
+}
+
+function doDraw(){
+  const shaker = document.getElementById('boxShaker');
+  const flash = document.getElementById('flash');
+  shaker.classList.add('shaking');
+
+  setTimeout(()=>{
+    flash.classList.add('on');
+    setTimeout(()=>{
+      current = pickMaterial();
+      collected.add(current.id);
+      saveState();
+      renderCard(current);
+      showPage('pageResult');
+      shaker.classList.remove('shaking');
+      requestAnimationFrame(()=>{
+        setTimeout(()=>flash.classList.remove('on'), 90);
+      });
+    }, 180);
+  }, 700);
+}
+
+/* =========================================================
+   图鉴渲染
+   ========================================================= */
+function renderCollection(){
+  const grid = document.getElementById('collGrid');
+  grid.innerHTML = '';
+  MATERIALS.forEach(m=>{
+    const got = collected.has(m.id);
+    const item = document.createElement('div');
+    item.className = 'coll-item' + (got ? '' : ' locked');
+    if(got){
+      item.style.setProperty('--c1', m.c1);
+      item.style.setProperty('--c2', m.c2);
+      item.innerHTML =
+        '<div class="mini-vis pat-' + m.pattern + '"></div>' +
+        '<span class="coll-name">' + m.name + '</span>';
+    }else{
+      item.innerHTML = '<span class="coll-lock">?</span>';
+    }
+    grid.appendChild(item);
+  });
+  document.getElementById('collCount').textContent = collected.size;
+  document.getElementById('coverProgress').textContent = collected.size;
+}
+
+/* =========================================================
+   提示
+   ========================================================= */
+let toastTimer = null;
+function showToast(msg){
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(()=>t.classList.remove('show'), 1600);
+}
+
+/* =========================================================
+   复制祝福语
+   ========================================================= */
+function copyBlessing(){
+  if(!current){ showToast('请先抽一张卡片'); return; }
+  const text =
+    '致老师：\n' +
+    current.blessing + '\n' +
+    '—— ' + current.name + '\n' +
+    '先进材料学域 · 2026教师节';
+
+  if(navigator.clipboard && window.isSecureContext){
+    navigator.clipboard.writeText(text)
+      .then(()=>showToast('祝福语已复制，快去送给老师吧'))
+      .catch(()=>fallbackCopy(text));
+  }else{
+    fallbackCopy(text);
+  }
+}
+function fallbackCopy(text){
+  const ta = document.createElement('textarea');
+  ta.value = text;
+  ta.style.position = 'fixed';
+  ta.style.left = '-9999px';
+  document.body.appendChild(ta);
+  ta.select();
+  try{
+    document.execCommand('copy');
+    showToast('祝福语已复制，快去送给老师吧');
+  }catch(e){
+    showToast('长按卡片可截图保存');
+  }
+  document.body.removeChild(ta);
+}
+
+/* =========================================================
+   粒子背景
+   ========================================================= */
+function spawnParticles(){
+  for(let i=0;i<16;i++){
+    const p = document.createElement('div');
+    p.className = 'particle';
+    const size = 2 + Math.random()*4;
+    p.style.width = size + 'px';
+    p.style.height = size + 'px';
+    p.style.left = Math.random()*100 + 'vw';
+    p.style.animationDuration = (10 + Math.random()*12) + 's';
+    p.style.animationDelay = (Math.random()*14) + 's';
+    document.body.appendChild(p);
+  }
+}
+
+/* =========================================================
+   事件绑定 & 初始化
+   ========================================================= */
+document.getElementById('btnDraw').addEventListener('click', doDraw);
+document.getElementById('crystalBox').addEventListener('click', doDraw);
+
+document.getElementById('btnAgain').addEventListener('click', ()=>{
+  showPage('pageCover');
+  setTimeout(doDraw, 320);
+});
+
+document.getElementById('btnCollection').addEventListener('click', ()=>{
+  renderCollection();
+  showPage('pageCollection');
+});
+
+document.getElementById('btnBack').addEventListener('click', ()=>{
+  if(current){
+    showPage('pageResult');
+  }else{
+    showPage('pageCover');
+  }
+});
+
+document.getElementById('btnCopy').addEventListener('click', copyBlessing);
+
+loadState();
+renderCollection();
+spawnParticles();
+</script>
+</body>
+</html>
